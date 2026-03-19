@@ -1,0 +1,128 @@
+<html>
+    
+    <head>
+        <title>noah messing around</title>
+    
+    
+    <style>
+    button{
+        background-color:gray;
+        border-radius:15px;
+        color:black;
+        font-size:20px;
+        text-align:center;
+        padding:25px 25px;
+        margin-bottom:7.5px;
+        font-family: Arial, sans-serif;
+        line-height:1;
+        }
+        button:hover{
+            background-color:black;
+            transform: scale(1.1);
+            color:white;
+        }
+        #display{
+            padding:30px 30px;
+            font-size:40px;
+            border-color:darkgray;
+            text-align:right
+        }
+        body{
+        font-family: Arial, sans-serif;
+        background-color:white;
+        text-align:center;
+        margin-top:75px;
+        background-color:lightgray;
+        border:10px;
+        border-color:darkgray;
+        }
+        #calculator{
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(5,80px)
+    grid-gap: 10px;
+    justify-content: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    margin-top:align;
+    margin-right:align;
+    margin-left:align;
+    margin-bottom:align;
+}
+
+#calculator-input {
+    grid-column: span 4;
+    text-align: right;
+    font-size: 40px;
+    padding: 15px;
+}
+    </style>
+    </head>
+    <body>
+    <h1>Welcome to my calculator</h1>
+    <div class="calculator">
+    <input id="display" type="text" readonly>
+    <br>
+    <button class="symbols">√</button>
+    <button class="symbols">**</button>
+    <button class="symbols">%</button>
+    <button class="backspace">⌫</button>
+    <br>
+    <button class="number">7</button>
+    <button class="number">8</button>
+    <button class="number">9</button>
+    <button class="symbols">/</button>
+    <br>
+    <button class="number">4</button>
+    <button class="number">5</button>
+    <button class="number">6</button>
+    <button class="symbols">*</button>
+    <br>
+    <button class="number">1</button>
+    <button class="number">2</button>
+    <button class="number">3</button>
+    <button class="symbols">-</button>
+    <br>
+    <button class="number">0</button>
+    <button class="symbols">.</button>
+    <button class="equals">=</button>
+    <button class="symbols">+</button>
+    <br>
+    <button class="clear">C</button>
+    </div>
+    <script>
+    const display = document.getElementById("display");
+        document.querySelectorAll(".number").forEach(button => {
+            button.addEventListener("click", () => {
+                 if (button.textContent === "√") {
+            display.value += "√(";
+        }else if(button.textContent === "**"){
+            display.value += "^";
+        }
+        else {
+            display.value += button.textContent;
+        }
+    });
+});
+        document.querySelectorAll(".symbols").forEach(button =>{
+           button.addEventListener("click",() => {
+           display.value += button.textContent;
+        });
+        });
+        
+        document.querySelector(".equals").addEventListener("click", () => {
+   let expression = display.value;
+    expression = expression.replace(/√(\d+(\.\d+)?)/g, "Math.sqrt($1)");
+    display.value = eval(expression);
+});
+
+    document.querySelector(".clear").addEventListener("click", () => {
+    display.value = "";
+    });
+document.querySelector(".backspace").addEventListener("click", () =>{
+    display.value = display.value.slice(0, -1);
+});
+    </script>
+    </body>
+</html>
