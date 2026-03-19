@@ -3,7 +3,6 @@
     <head>
         <title>calculator-2.0</title>
     
-    
     <style>
     button{
         background-color:gray;
@@ -23,6 +22,7 @@
         }
         #display{
             padding:30px 30px;
+            grid-column:span 4;
             font-size:40px;
             border-color:darkgray;
             text-align:right
@@ -36,10 +36,10 @@
         border:10px;
         border-color:darkgray;
         }
-        #calculator{
+.calculator{
     display: grid;
     grid-template-columns: repeat(4, 80px);
-    grid-template-rows: repeat(5,80px)
+    grid-template-rows: repeat(5,80px);
     grid-gap: 10px;
     justify-content: center;
     padding: 20px;
@@ -48,44 +48,32 @@
     margin:0 auto;
 }
 
-#calculator-input {
-    grid-column: span 4;
-    text-align: right;
-    font-size: 40px;
-    padding: 15px;
-}
     </style>
     </head>
     <body>
     <h1>Welcome to my calculator</h1>
     <div class="calculator">
     <input id="display" type="text" readonly>
-    <br>
     <button class="symbols">√</button>
     <button class="symbols">**</button>
     <button class="symbols">%</button>
     <button class="backspace">⌫</button>
-    <br>
     <button class="number">7</button>
     <button class="number">8</button>
     <button class="number">9</button>
     <button class="symbols">/</button>
-    <br>
     <button class="number">4</button>
     <button class="number">5</button>
     <button class="number">6</button>
     <button class="symbols">*</button>
-    <br>
     <button class="number">1</button>
     <button class="number">2</button>
     <button class="number">3</button>
     <button class="symbols">-</button>
-    <br>
     <button class="number">0</button>
     <button class="symbols">.</button>
     <button class="equals">=</button>
     <button class="symbols">+</button>
-    <br>
     <button class="clear">C</button>
     </div>
     <script>
@@ -99,8 +87,10 @@
            button.addEventListener("click",() => {
                 if (button.textContent === "√") {
             display.value += "√(";
+                }
            else{
                display.value += button.textContent;
+           }
         });
         });
         
