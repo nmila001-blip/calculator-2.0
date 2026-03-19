@@ -45,10 +45,7 @@
     padding: 20px;
     background: white;
     border-radius: 10px;
-    margin-top:align;
-    margin-right:align;
-    margin-left:align;
-    margin-bottom:align;
+    margin:0 auto;
 }
 
 #calculator-input {
@@ -95,19 +92,18 @@
     const display = document.getElementById("display");
         document.querySelectorAll(".number").forEach(button => {
             button.addEventListener("click", () => {
-                 if (button.textContent === "√") {
-            display.value += "√(";
-        }else if(button.textContent === "**"){
-            display.value += "^";
-        }
-        else {
             display.value += button.textContent;
-        }
     });
 });
         document.querySelectorAll(".symbols").forEach(button =>{
            button.addEventListener("click",() => {
-           display.value += button.textContent;
+                if (button.textContent === "√") {
+            display.value += "√(";
+        }else if(button.textContent === "**"){
+            display.value += "^";
+        }
+           else{
+               display.value += button.textContent;
         });
         });
         
